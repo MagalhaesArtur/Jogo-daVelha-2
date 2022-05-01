@@ -1,0 +1,142 @@
+// Resets
+@font-face {
+  font-family: GigaSansBlack;
+  src: url(./fonts/giga-sans-black.otf);
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: GigaSansBlack;
+}
+@mixin center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+// Body
+body {
+  @include center();
+  width: 100%;
+  height: 100vh;
+  --bg: circle, rgba(34, 193, 195, 1) 0%, rgba(253, 187, 45, 1) 100%;
+  background: rgb(34, 193, 195);
+  background: radial-gradient(var(--bg));
+}
+
+.message {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  @include center();
+  background-color: rgba(0, 0, 0, 0.733);
+  .winner {
+    @include center();
+    flex-direction: column;
+    color: #fff;
+    font-size: 26px;
+    button {
+      border: transparent 2px solid;
+      border-radius: 10px 40px;
+      color: #fff;
+      background-color: rgb(28, 175, 28);
+      width: 140px;
+      height: 45px;
+      transition-property: all;
+      transition-timing-function: ease;
+      transition-delay: 50ms;
+      transition-duration: 300ms;
+    }
+    button:hover {
+      cursor: pointer;
+      background-color: #fff;
+      color: rgb(28, 175, 28);
+      border: 2px solid rgb(28, 175, 28);
+    }
+  }
+  display: none;
+}
+// Tabuleiro
+
+.game {
+  display: grid;
+  width: 100%;
+  height: 100%;
+  justify-items: center;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  grid-template-columns: repeat(3, auto);
+  .square {
+    width: 100px;
+    height: 100px;
+    border: 2px solid #fff;
+    @include center();
+    position: relative;
+  }
+  .square.x:hover,
+  .square.o:hover {
+    cursor: not-allowed;
+  }
+}
+
+// Estilizando o X e O
+.square.x::before,
+.square.x::after,
+.game.x .square:not(.x):not(.o):hover:after,
+.game.x .square:not(.x):not(.o):hover::before {
+  content: "";
+  height: 15px;
+  width: 90px;
+  background-color: rgb(255, 215, 0);
+  position: absolute;
+}
+
+.game.x .square:not(.x):not(.o):hover::after,
+.game.x .square:not(.x):not(.o):hover::before {
+  background-color: rgba(255, 215, 0, 0.3);
+}
+
+.square.x::before,
+.game.x .square:hover::before {
+  transform: rotate(45deg);
+}
+.square.x::after,
+.game.x .square:hover::after {
+  transform: rotate(-45deg);
+}
+
+.square.o::after,
+.game.o .square:not(.x):not(.o):hover:after {
+  content: "";
+  height: 90px;
+  width: 90px;
+  border-radius: 50%;
+  background-color: gold;
+}
+.game.o .square:not(.x):not(.o):hover:after {
+  background-color: rgba(255, 215, 0, 0.3);
+}
+// Cada quadradinho
+
+.square:nth-child(1),
+.square:nth-child(2),
+.square:nth-child(3) {
+  border-top: none;
+}
+.square:nth-child(1),
+.square:nth-child(4),
+.square:nth-child(7) {
+  border-left: none;
+}
+.square:nth-child(7),
+.square:nth-child(8),
+.square:nth-child(9) {
+  border-bottom: none;
+}
+.square:nth-child(3),
+.square:nth-child(6),
+.square:nth-child(9) {
+  border-right: none;
+}

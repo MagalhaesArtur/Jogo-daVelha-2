@@ -1,0 +1,193 @@
+@font-face {
+  font-family: GigaSansBlack;
+  src: url(./fonts/giga-sans-black.otf);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-family: GigaSansBlack;
+}
+
+body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  height: 100vh;
+  --bg: circle, rgba(34, 193, 195, 1) 0%, rgba(253, 187, 45, 1) 100%;
+  background: #22c1c3;
+  background: radial-gradient(var(--bg));
+}
+
+.message {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: rgba(0, 0, 0, 0.733);
+  display: none;
+}
+
+.message .winner {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  color: #fff;
+  font-size: 26px;
+}
+
+.message .winner button {
+  border: transparent 2px solid;
+  border-radius: 10px 40px;
+  color: #fff;
+  background-color: #1caf1c;
+  width: 140px;
+  height: 45px;
+  -webkit-transition-property: all;
+  transition-property: all;
+  -webkit-transition-timing-function: ease;
+          transition-timing-function: ease;
+  -webkit-transition-delay: 50ms;
+          transition-delay: 50ms;
+  -webkit-transition-duration: 300ms;
+          transition-duration: 300ms;
+}
+
+.message .winner button:hover {
+  cursor: pointer;
+  background-color: #fff;
+  color: #1caf1c;
+  border: 2px solid #1caf1c;
+}
+
+.game {
+  display: -ms-grid;
+  display: grid;
+  width: 100%;
+  height: 100%;
+  justify-items: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-grid-columns: (auto)[3];
+      grid-template-columns: repeat(3, auto);
+}
+
+.game .square {
+  width: 100px;
+  height: 100px;
+  border: 2px solid #fff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+}
+
+.game .square.x:hover,
+.game .square.o:hover {
+  cursor: not-allowed;
+}
+
+.square.x::before,
+.square.x::after,
+.game.x .square:not(.x):not(.o):hover:after,
+.game.x .square:not(.x):not(.o):hover::before {
+  content: "";
+  height: 15px;
+  width: 90px;
+  background-color: gold;
+  position: absolute;
+}
+
+.game.x .square:not(.x):not(.o):hover::after,
+.game.x .square:not(.x):not(.o):hover::before {
+  background-color: rgba(255, 215, 0, 0.3);
+}
+
+.square.x::before,
+.game.x .square:hover::before {
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+
+.square.x::after,
+.game.x .square:hover::after {
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+}
+
+.square.o::after,
+.game.o .square:not(.x):not(.o):hover:after {
+  content: "";
+  height: 90px;
+  width: 90px;
+  border-radius: 50%;
+  background-color: gold;
+}
+
+.game.o .square:not(.x):not(.o):hover:after {
+  background-color: rgba(255, 215, 0, 0.3);
+}
+
+.square:nth-child(1),
+.square:nth-child(2),
+.square:nth-child(3) {
+  border-top: none;
+}
+
+.square:nth-child(1),
+.square:nth-child(4),
+.square:nth-child(7) {
+  border-left: none;
+}
+
+.square:nth-child(7),
+.square:nth-child(8),
+.square:nth-child(9) {
+  border-bottom: none;
+}
+
+.square:nth-child(3),
+.square:nth-child(6),
+.square:nth-child(9) {
+  border-right: none;
+}
+/*# sourceMappingURL=styles.css.map */
